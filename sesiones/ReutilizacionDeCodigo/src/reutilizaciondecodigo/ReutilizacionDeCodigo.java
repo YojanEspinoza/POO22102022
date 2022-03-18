@@ -4,9 +4,11 @@
  */
 package reutilizaciondecodigo;
 
+import ico.fes.componentes.Monitor;
 import ico.fes.componentes.Mouse;
 import ico.fes.componentes.Procesador;
 import ico.fes.equipos.Computadora;
+import ico.fes.herencia.Alumno;
 import ico.fes.iu.MiVentana;
 /**
  *
@@ -32,10 +34,37 @@ public class ReutilizacionDeCodigo {
         Mouse raton = new Mouse();
         raton.setMarca("Logitech");
         compu.setRaton(raton);
-        
         compu.getRaton().setModelo("GS400");
         
+        //Monitor a marca Samsung, 45" y LED
+        
+        //Metodo 1
+        Monitor pantalla = new Monitor();
+        pantalla.setMarca("Samsung");
+        pantalla.setPulgadas(45f);
+        pantalla.setTipo("LED");
+        compu.setPantalla( pantalla);
+        
+        //Metodo 2
+        compu.setPantalla(new Monitor("Samsung", "LED", 45f));
+        
+        //Solo cambiar la marca a "LG" sin alterar lo demas
+        compu.getPantalla().setMarca("LG");
+        
+        
         System.out.println( compu );
+        
+        //HERENCIA
+        System.out.println("------------HERENCIA--------------");
+        Alumno alu1 =new Alumno();
+        alu1.setNombre("Jose");
+        System.out.println( alu1 );
+        
+        
+        Alumno alu2 = new Alumno("121212-5", "Derecho", 2,"Mario", 20);
+        System.out.println( alu2 );
+        
+        
         
     }
     
