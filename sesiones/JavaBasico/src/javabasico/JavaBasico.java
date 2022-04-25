@@ -5,6 +5,8 @@
 package javabasico;
 
 import java.lang.*;
+import java.util.ArrayList;
+import java.util.Scanner;
 /**
  *
  * @author yojan
@@ -160,6 +162,64 @@ public class JavaBasico {
         for (Perro perro : lista) {
             System.out.println( perro );
         }
+        
+        //ArrayList de la clase perro
+        System.out.println("----- ArrayList -----");
+        //Comparado con un arreglo normal, en esta 
+        //puedes agregar y quitar mas o menos elementos.
+        ArrayList mascotas = new ArrayList();
+        mascotas.add( new Perro( "Poddle", 1 ) );
+        mascotas.add( new Perro( "Doverman", 2 ) );
+        mascotas.add( new Perro( "Akita", 2 ) );
+        mascotas.add( new Perro( "Gran Danes", 3 ) );
+        mascotas.add( new Perro( "Chihuahua", 0 ) );
+        
+        for (Object mascota : mascotas) {
+            Perro tmp = ( Perro )mascota;
+            System.out.println( tmp );
+        }
+        
+        //Despues de la version 2 de Java se agrego el concepto
+        //de clases genericas
+        //ES MEJOR USAR LAS CLASES GENERICAS
+        System.out.println("----- REESCRIBIENDO CON CLASES GENERICAS -----");
+        //Los datos internos van a ser de tipo perro
+        ArrayList<Perro> mascotas2 = new ArrayList<Perro>();
+        mascotas2.add( new Perro( "Poddle", 1 ) );
+        mascotas2.add( new Perro( "Doverman", 2 ) );
+        mascotas2.add( new Perro( "Akita", 2 ) );
+        mascotas2.add( new Perro( "Gran Danes", 3 ) );
+        mascotas2.add( new Perro( "Chihuahua", 0 ) );
+        //Regresa de tipo perro y solo se imprime 
+        
+        System.out.println("----- CAMBIAR EL TAMAÑO DE ALGUN PERRO SEGUN SU RAZA ----- ");
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("¿Que raza quieres cambiar el tamaño?");
+        String raza = teclado.next(); //Faltan excepciones
+        
+        for (Perro perro : mascotas2) {
+            if(perro.getRaza().equals( raza )){
+                perro.setTamaño(4);
+            }
+        }
+        
+        for (Perro perro : mascotas2){
+            System.out.println( perro );
+        }
+        /*
+        System.out.println("----- AGREGANDO OTRO PERRO -----");
+        mascotas2.add(2, new Perro( "Pug", 2 ));
+        for (Perro perro : mascotas2) {
+            System.out.println( perro );   
+        }
+        */                                         
+        System.out.println("----- AGREGANDO PERRO EN UN LUGAR EN ESPECIFICO -----");
+        mascotas2.add(2, new Perro("Pug",2));
+        for (Perro perro : mascotas2) {
+            System.out.println( perro );
+        }
+        
+        System.out.println("Perro 2 es : " + mascotas2.get(2));
         
     }
     
