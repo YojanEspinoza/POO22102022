@@ -6,6 +6,7 @@ package javabasico;
 
 import java.lang.*;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 /**
  *
@@ -218,9 +219,54 @@ public class JavaBasico {
         for (Perro perro : mascotas2) {
             System.out.println( perro );
         }
+        System.out.println("--------------------------------");
+        System.out.println("Perro 2 es : " + mascotas2.get(2));//Regresa un objeto en la posicion i       
         
-        System.out.println("Perro 2 es : " + mascotas2.get(2));
+        System.out.println("----- Eliminar el Akita, index 3 -----");
+        Perro p = mascotas2.remove(3); //Se almacena el elemtno que se quiera sacar
         
+        for (Perro perro : mascotas2) {
+            System.out.println(perro);
+        }
+        System.out.println("----- IMPRIMIEDNO VALOR ELIMINADO ----- ");
+        System.out.println("El perro sacado es " + p);
+        //Intercambiando por el que se saco
+        mascotas2.set(1, new Perro("Boxer" ,3));
+        mascotas2.set(2, new Perro("Labrador", 4));
+        System.out.println("----- INTERCAMBIANDO PERROS -----");
+        for (Perro perro : mascotas2) {
+            System.out.println(perro);           
+        }
+        
+        //MANEJO DE EXCEPCIONES
+        System.out.println("----- ESCOGIENDO UN PERRO PARA IMPRIMIR -----");
+        System.out.print("Elige un numero entre 0 y 4: ");
+        //CODIGO PARA EL MANEJO DE EXCEPCIONES
+        Perro puppy=null;//puppy es un valor de tipo Perro
+        int num = 10;
+                
+        //AGRUPACION DE EXCEPCIONES, DE ACUERDO A SU JERAQUIA
+        try{
+            int indice = teclado.nextInt();
+            num = num / indice;
+            puppy = mascotas2.get(indice);
+        }catch(IndexOutOfBoundsException ex){
+            System.out.println("Ocurrio un error...");
+            System.out.println("El valor debe estar entre 0 y 4");
+            System.out.println( ex.getMessage() );//Manda a llamar la excepcion
+            puppy = mascotas2.get(0); //Si la persona pone un numero mayor al de los arreglos, 
+                                      //se imprime el primer elemento
+        }catch(InputMismatchException ime){
+            System.out.println("Solo deben de ser numeros");
+            puppy = mascotas2.get(0);
+        }catch(Exception e){
+            System.out.println("Ultimo recurso...");
+        }finally{//Siempre se ejecuta, no importa si detecta o no excepcion   
+            System.out.println("En finally");
+            System.out.println(puppy);
+        }
+        // Un ERROR es diferente a una EXEPCION
+        System.out.println("Se alcanzo el fin del programa");
     }
     
 }
