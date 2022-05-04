@@ -49,7 +49,7 @@ public class Cuadrado implements Figura{
 
     @Override
     public String saludar() {
-        System.out.println("Hola desde un Mtéodo no Abstracto");
+        System.out.println("Hola desde un Método no Abstracto");
         return "Hola";
     }
     
