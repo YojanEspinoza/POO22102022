@@ -4,6 +4,7 @@
  */
 package ico.fes.iu.swing;
 
+import ico.fes.iu.swing.modelos.NombresComboModelo;
 import java.awt.FlowLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ItemEvent;
@@ -13,6 +14,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -23,15 +25,16 @@ import javax.swing.JTextField;
  *
  * @author yojan
  */
-public class VentanaSwing extends JFrame {
+public class VentanaSwingVersion2 extends JFrame {
     private FlowLayout layout;
     private JTextField cuadroTexto;
     private JButton boton;
     private JLabel resultado;
     private JComboBox<String> lista;
+    private NombresComboModelo modelo;
     
 
-    public VentanaSwing() throws HeadlessException {
+    public VentanaSwingVersion2() throws HeadlessException {
         this.setTitle("Mi ventanas Swing");
         this.setSize(300, 220);
         this.setVisible(true);
@@ -43,12 +46,16 @@ public class VentanaSwing extends JFrame {
         
         //ComboBox
         lista = new JComboBox<String>();
-        //Usando DefaultComboBoxModel
-        lista.addItem("Rojo");
-        lista.addItem("Verde");
-        lista.addItem("Azul");
-        lista.addItem("Blanco");
-       
+        //Usando un modelo personalizado
+        modelo = new NombresComboModelo();
+        ArrayList<String>info = new ArrayList();
+        info.add("Jesus");
+        info.add("Santiago");
+        info.add("Elena");
+        info.add("Jose");
+        modelo.setDatos(info);
+        lista.setModel(modelo);
+     
         
         this.getContentPane().add(cuadroTexto);
         this.getContentPane().add(boton);
