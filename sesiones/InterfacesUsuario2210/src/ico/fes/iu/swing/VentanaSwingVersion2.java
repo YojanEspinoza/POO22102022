@@ -32,11 +32,14 @@ public class VentanaSwingVersion2 extends JFrame {
     private JLabel resultado;
     private JComboBox<String> lista;
     private NombresComboModelo modelo;
+    private JTextField txtNombre;
+    private JButton btnAgregar;
+    private ArrayList<String> info;
     
 
     public VentanaSwingVersion2() throws HeadlessException {
         this.setTitle("Mi ventanas Swing");
-        this.setSize(300, 220);
+        this.setSize(300, 200);
         this.setVisible(true);
         layout = new FlowLayout();
         this.setLayout(layout);
@@ -48,18 +51,22 @@ public class VentanaSwingVersion2 extends JFrame {
         lista = new JComboBox<String>();
         //Usando un modelo personalizado
         modelo = new NombresComboModelo();
-        ArrayList<String>info = new ArrayList();
+        info = new ArrayList();
         info.add("Jesus");
         info.add("Santiago");
         info.add("Elena");
         info.add("Jose");
         modelo.setDatos(info);
         lista.setModel(modelo);
+        txtNombre = new JTextField(15);
+        btnAgregar = new JButton("Agregar nombre");
      
         
         this.getContentPane().add(cuadroTexto);
         this.getContentPane().add(boton);
         this.getContentPane().add(resultado);
+        this.getContentPane().add(txtNombre);
+        this.getContentPane().add(btnAgregar);
         
         //ComboBox
         this.getContentPane().add(lista);
@@ -107,6 +114,17 @@ public class VentanaSwingVersion2 extends JFrame {
                 System.out.println( e.getItem() ); //Imprimiendo el contenido del item  seleccionado 
             }
             
+        });
+        
+        this.btnAgregar.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                String nuevo = txtNombre.getText();
+                //modelo.addNombre(nuevo);
+                info.add(nuevo);
+                lista.repaint();
+            }
+        
         });
         
     }
