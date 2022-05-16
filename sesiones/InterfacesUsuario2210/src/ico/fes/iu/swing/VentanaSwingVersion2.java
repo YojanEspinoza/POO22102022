@@ -110,6 +110,7 @@ public class VentanaSwingVersion2 extends JFrame {
         });
         
     }
+   
     
     
 }

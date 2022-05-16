@@ -85,6 +85,7 @@ public class VentanaSwing extends JFrame {
                 
                 //Con este codigo se convierte el String a un float
                 float centigrados = Float.parseFloat( cuadroTexto.getText() );
+                
                 //°F = (°C x 9/5) + 32
                 float farenheit = (centigrados * (9.0f/5.0f))+32.0f;
                 resultado.setText(farenheit + " °F");
