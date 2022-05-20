@@ -68,6 +68,9 @@ public class ModeloPersonaCombo implements ComboBoxModel<Persona>{
     public void removeListDataListener(ListDataListener l) {
     }
     
+    public void agregarPersona ( Persona p ){
+        this.data.add(p);
+    }
     
     
 }
