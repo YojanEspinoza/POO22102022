@@ -70,7 +70,15 @@ public class ModeloPersonaCombo implements ComboBoxModel<Persona>{
     
     public void agregarPersona ( Persona p ){
         this.data.add(p);
+        //Tambien se deberia insertar en base de datos
     }
     
+    public void cargarDatos (){
+        // Simular conexion a base de datos
+        this.data = new ArrayList<Persona>();
+        this.data.add(new Persona("Jesus", 33));
+        this.data.add(new Persona("Maria", 30));
+        this.data.add(new Persona("Jose", 32));
+    }
     
 }
